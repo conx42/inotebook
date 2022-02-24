@@ -16,7 +16,7 @@ const NoteState = (props) => {
         
             headers: {
               "Content-Type": "application/json",
-              "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIwZTZmYzUxZmIyNjAyYjY3ZGRjZDc0In0sImlhdCI6MTY0NTYxOTg4OH0.kIlhXIspMiaDoyG0Vu3qIKuf5koA_FCRiK7bnGMaOIY"
+              "auth-token": localStorage.getItem('token')
             },
           });
           
@@ -35,7 +35,7 @@ const NoteState = (props) => {
         
             headers: {
               "Content-Type": "application/json",
-              "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIwZTZmYzUxZmIyNjAyYjY3ZGRjZDc0In0sImlhdCI6MTY0NTYxOTg4OH0.kIlhXIspMiaDoyG0Vu3qIKuf5koA_FCRiK7bnGMaOIY"
+              "auth-token": localStorage.getItem('token')
             },
             body: JSON.stringify({title, description, tag}) 
           });
@@ -52,11 +52,11 @@ const NoteState = (props) => {
         
             headers: {
               'Content-Type': 'application/json',
-              "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIwZTZmYzUxZmIyNjAyYjY3ZGRjZDc0In0sImlhdCI6MTY0NTYxOTg4OH0.kIlhXIspMiaDoyG0Vu3qIKuf5koA_FCRiK7bnGMaOIY"
+              "auth-token": localStorage.getItem('token')
             }, 
           });
           const json = await response.json();
-        //   console.log(json);
+          console.log(json);
 
 
         // console.log("Delete the note with id" + id);
@@ -72,12 +72,12 @@ const NoteState = (props) => {
         
             headers: {
               'Content-Type': 'application/json',
-              "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIwZTZmYzUxZmIyNjAyYjY3ZGRjZDc0In0sImlhdCI6MTY0NTYxOTg4OH0.kIlhXIspMiaDoyG0Vu3qIKuf5koA_FCRiK7bnGMaOIY"
+              "auth-token": localStorage.getItem('token')
             },
             body: JSON.stringify({title, description, tag}) 
           });
           const json = response.json();
-        //   console.log(json);
+          console.log(json);
 
 
           let newNotes = JSON.parse(JSON.stringify(notes))

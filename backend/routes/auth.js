@@ -24,10 +24,11 @@ router.post('/createuser', [
   //password validating korar jonno eiiSyntax taa use kora hoy
   body('password', 'password mustbe atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
+  let success = false;
   //If there are errors, return Bad request and the errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ success, errors: errors.array() });
   }
   //check weater user with the same email exists
   try {
@@ -59,7 +60,8 @@ router.post('/createuser', [
     // console.log(jwtData);
 
     // res.json(user)
-    res.json({ authtoken })
+    success = true;
+    res.json({success, authtoken })
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Some internal server error")

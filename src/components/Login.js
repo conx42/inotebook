@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
-const Login = () => {
+const Login = (props) => {
     const [credentials, setCredentials] = useState({email: "", password: ""})
     let history = useHistory();
 
@@ -23,9 +23,10 @@ const Login = () => {
           if (json.success) {
               // Save the auth token and redirect
               localStorage.setItem('token', json.authtoken);
+              props.showAlert("Logged in Successfully:)", "success");
               history.push("/");
           }else{
-              alert("Invalid Credentials!!!");
+            props.showAlert("Invalid User Details", "danger");
           }
     }
 
@@ -35,7 +36,8 @@ const Login = () => {
 
 
     return (
-        <div>
+        <div className='mt-3'>
+            <h2>Login to continue to iNotebook</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
